@@ -260,12 +260,12 @@ from PIL import Image
 
 def recognize_text(image_path):
     pytesseract.pytesseract.tesseract_cmd = R'C:\Program Files\Tesseract-OCR\tesseract.exe'
-    text = pytesseract.image_to_string(resize_img(cv2.imread(image_path)), lang='kor')
+    text = pytesseract.image_to_string(resize_img(cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)), lang='kor')
     return text
     
 def resize_img(img):
     original_img = img
-    h,w,c = original_img.shape
+    h,w = original_img.shape
     resized = cv2.resize(original_img,(w,h))
     return resized
 
