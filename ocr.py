@@ -7,6 +7,7 @@ import math
 from typing import Tuple, Union
 import numpy as np
 import os
+pytesseract.tesseract_cmd = R'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 def YOLO_to_img(path):              # 이미지 받고 읽기
     img = cv2.imread(f"{path}",cv2.IMREAD_COLOR)
@@ -15,9 +16,10 @@ def YOLO_to_img(path):              # 이미지 받고 읽기
 
 
 def text_replace(text):             # tesseract를 통해 나온 text 정규화
-    text = text.replace("\n", "")
+    #text = text.replace("\n", "")
     text = text.replace("\x0c", "")
     text = text.replace(",", "")
+    text = text.replace(".", "")
     return text
 
 
@@ -45,12 +47,16 @@ def rotate_img(img):                    # 화면 돌리기 후 grayscale
 # ----------------------------------------------------------------
 # 이미지 자르기는 들어오는 YOLO 이미지에 따라 달라질 수 있음
 
+def YOLO1_img(img):           # YOLO2 이미지 자르기, (당월부과액, 할인총계)
+    new_YOLO1_img = img[26:,:300]
+    return new_YOLO1_img
+
 def YOLO2_img(img):           # YOLO2 이미지 자르기 (할인총계,납기일,미납연체료)
-    new_YOLO2_img = img[250:410, 800:1050]
+    new_YOLO2_img = img[125:180,340:]
     return new_YOLO2_img
 
 def YOLO3_img(img):                # YOLO3 이미지 자르기, (납기일, 총 납기금액)
-    new_YOLO3_img = img[690:860, 970:1380]
+    new_YOLO3_img = img[220:250,300:430]
     return new_YOLO3_img
 
 
@@ -62,22 +68,23 @@ def tesseract_text(img):           # tesseract한 결과
     return text
 
 def YOLO1_price(YOLO1_list):    # YOLO1의 정보  demo를 위해서 numbers가 ['1', '2023', '1', '2023', '2', '28', '172980']이렇게 온다고 가정
-    day = ['년', '월 분 고지서 내역 입니다. ', '년', '월', '일까지 ' , '원 납부해주셔야 합니다']
-    numbers = re. findall('\d+', YOLO1_list)
-    index = numbers.index('2023')
-    numbers = numbers[index:]
+    day = ['년', '월 분 고지서 내역 입니다. ', '년', '월', '일까지 ' , '원 납부해주셔야 합니다.']
 
-    combined = []
-    for i in range(len(numbers)):
-        combined.append (numbers[i]+day[i])
-    result = ' '.join(combined)
+    if len(YOLO1_list) == len(day):
+
+        combined = []
+        for i in range(len(YOLO1_list)):
+            combined.append (YOLO1_list[i]+day[i])
+        result = ' '.join(combined)
+    else:
+        result = "인식에 실패하였습니다."
     return result
 
 def YOLO2_price(YOLO2_list):    # 할인총계만 있다면 len = 1, 미납액 까지 있다면 3
     return_str = ""
     if len(YOLO2_list) == 1:
         discount_price = YOLO2_list[0] # 할인총계
-        return_str = f"할인총계는 {discount_price}입니다."
+        return_str = f"할인총계는 {discount_price}원입니다."
     elif len(YOLO2_list) == 3:
         discount_price = YOLO2_list[0] # 할인총계
         dismiss = YOLO2_list[1] # 미납액
@@ -106,7 +113,7 @@ def str_to_int(text):   # string값에서 숫자뽑아서 넣기. 0으로 시작
 
 
 def final_announce(int_list):
-    announce = ['년','월', '일까지 총' , '원 납부해주셔야 합니다']
+    announce = ['원 납부해주셔야 합니다']
     return_str = ""
     combined = []
     if len(int_list) == len(announce):
@@ -118,9 +125,9 @@ def final_announce(int_list):
     return return_str
 
 # ---------------------------------- 실제 -------------------------------------------
-YOLO1_real_text = tesseract_text(YOLO_to_img("./runs/detect27/photo/web2.png"))
-YOLO2_real_text = tesseract_text(YOLO_to_img("./runs/detect27/photo/web.png"))
-YOLO3_real_text = tesseract_text(YOLO_to_img("./runs/detect27/photo/web3.png"))
+#YOLO1_real_text = tesseract_text(YOLO1_img(YOLO_to_img("./runs/detect/photo/pic.jpg")))
+#YOLO2_real_text = tesseract_text(YOLO2_img(YOLO_to_img("./runs/detect/photo/pic3.jpg")))
+#YOLO3_real_text = tesseract_text(YOLO3_img(YOLO_to_img("./runs/detect/photo/pic3.jpg")))
 # 실질적으로 들어갈 때 경로 설정해주어서 text_replace함수에 인자값으로 들어갈 값들
 
 # ---------------------------------- 예시 -------------------------------------------
@@ -155,13 +162,32 @@ YOLO3_real_text = tesseract_text(YOLO_to_img("./runs/detect27/photo/web3.png"))
 # # print(result)
 
 # -------------------------------- 실제 demo 버전용----------------------------------------
-norm_YOLO2_real = str_to_int(text_replace(YOLO2_real_text)) # YOLO2 정규화 후 숫자만 남기기
-norm_YOLO3_real = str_to_int(text_replace(YOLO3_real_text))   # YOLO3 정규화 후 숫자만 남기기
-
-YOLO1_result = YOLO1_price(YOLO1_real_text)
-YOLO2_result = YOLO2_price(norm_YOLO2_real)
-YOLO3_result = final_announce(norm_YOLO3_real) 
-
-final_list = []
-final_list.extend([YOLO1_result,YOLO2_result,YOLO3_result])
+#norm_YOLO1_real = str_to_int(text_replace(YOLO1_real_text))
+#norm_YOLO2_real = str_to_int(text_replace(YOLO2_real_text)) # YOLO2 정규화 후 숫자만 남기기
+#norm_YOLO3_real = str_to_int(text_replace(YOLO3_real_text))   # YOLO3 정규화 후 숫자만 남기기
+#
+#YOLO1_result = YOLO1_price(norm_YOLO1_real)
+#YOLO2_result = YOLO2_price(norm_YOLO2_real)
+#YOLO3_result = final_announce(norm_YOLO3_real) 
+#
+#final_list = []
+#final_list.extend([YOLO1_result,YOLO2_result,YOLO3_result])
 # ----------------------------------------------------------------------------------------
+
+
+def final():
+    YOLO1_real_text = tesseract_text(YOLO1_img(YOLO_to_img("./runs/detect/photo/pic.jpg")))
+    YOLO2_real_text = tesseract_text(YOLO2_img(YOLO_to_img("./runs/detect/photo/pic3.jpg")))
+    YOLO3_real_text = tesseract_text(YOLO3_img(YOLO_to_img("./runs/detect/photo/pic3.jpg")))
+    
+    norm_YOLO1_real = str_to_int(text_replace(YOLO1_real_text))
+    norm_YOLO2_real = str_to_int(text_replace(YOLO2_real_text)) # YOLO2 정규화 후 숫자만 남기기
+    norm_YOLO3_real = str_to_int(text_replace(YOLO3_real_text))   # YOLO3 정규화 후 숫자만 남기기
+
+    YOLO1_result = YOLO1_price(norm_YOLO1_real)
+    YOLO2_result = YOLO2_price(norm_YOLO2_real)
+    YOLO3_result = final_announce(norm_YOLO3_real) 
+
+    final_list = []
+    final_list.extend([YOLO1_result,YOLO2_result,YOLO3_result])
+    return final_list

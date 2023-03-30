@@ -118,6 +118,8 @@
 	      });
 	    }
         </script>
-    <img src="{{  image_url  }}">
+    {% for image_url in image_urls %}
+        <img src="{{ image_url }}">
+    {% endfor %}
 </body>
 </html>

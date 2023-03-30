@@ -91,7 +91,7 @@ def run(
 
     # Directories
     save_dir = increment_path(Path(project))  # increment run
-    (save_dir / 'labels' if save_txt else save_dir).mkdir(parents=True, exist_ok=True)  # make dir
+    (save_dir / 'detect').mkdir(parents=True, exist_ok=True)  # make dir
 
     # Load model
     device = select_device(device)
