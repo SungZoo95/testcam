@@ -136,7 +136,31 @@
 </div>
 
 1. Client가 image/video를 선택해 로컬 서버에 전송합니다.
-2. 받은 image/video를 로컬 서버에 포함된 Yolov5모델(학습되어있는)에 전달하여 예측 값을 뽑아냅니다. ( 3장)
+2. 받은 image/video를 로컬 서버에 포함된 Yolov5모델(학습되어있는)에 전달하여 예측값을 뽑아냅니다. ( 3장)
 3. 3장으로 나눠진 image를 Pytesseract를 사용하여 원하는 text를 image에서 추출합니다
 4. 추출한 text를 Docker Cotainer안에 있는 Tensorflowtts에 전달하고 다시 음성파일로 로컬 서버에 전달받습니다.
-5. 전달받은 음성파일을 로컬 서버에서 Client에게 음성으로 전달합니다.
+5. 전달받은 음성파일을 로컬 서버에서 Client에 음성으로 전달합니다.
+
+-----------------------------------------
+
+
+<br>
+</br>
+
+## 👾 기능별 오류 및 해결
+
+### Text Detection 
+- 테스트 데이터 구성을 위해 웹크롤링으로 고지서 이미지를 수집하였으나 수집한 데이터의 화질, 구도, 채광 등의 차이가 심해 모델 학습에 적합하지 않다고 판단하여 실제 고지서를 통해 Dataest을 구성. [12.웹크롤링 이미지],[13.실제고지서 이미지]
+
+### Text Recognition
+- 실제 Webcam에서 가져온 저화질 이미지가 Tesseract의 인식률에 영향을 주어
+Input Process를 실시간 입력이 아닌 이미지 및 동영상 업드로 변경하여 화질 문제로 인한 인식률 저하 문제를 해결.
+
+[12.실시간으로 입력된 이미지],[13.입력 process를 변경한 후 이미지]
+
+### Voice
+  ##### Tensorflow 버전 오류
+  - docker container를 2.6.0 으로 만든 다음 터미널 안에서 intall 하면 강제적으로 가동하지만, dockerfile 내에서 구동하면 오류 발생. 2.7.0에서 구동이 되지 않는 라이브러리가 있음을 확인. 
+
+  ##### 권한 변경 및 docker container 설정 변경
+  - NumPy와 다른 라이브러리 호환성 이슈 발생으로 dockerfile에 pip install numpy==1.19.5 추가하고 Nvidia GPG Public Key를 교체하여 Dockerfile을 구동할 수있게 수정.
