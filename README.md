@@ -62,10 +62,12 @@
 
 ## 🔄프로세스 
 
-<p align="center"><img src ="https://user-images.githubusercontent.com/119566469/228916839-1d6f27be-d9d0-4688-85bf-0997adb0bf93.PNG" width="700"></p>
-
 <p align="center"><img src ="https://user-images.githubusercontent.com/119566469/229003876-f67ae56d-af04-422c-93e7-f673e48c5fc7.png" width="700"></p>
--------------------------------------
+
+- 초기 서비스 프로세스 입니다.
+    - image input -> webcam
+
+<p align="center"><img src ="https://user-images.githubusercontent.com/119566469/228916839-1d6f27be-d9d0-4688-85bf-0997adb0bf93.PNG" width="700"></p>
 
 - Text Detection : Yolov5 모델을 사용해 Image의 원하는 부분을 추출 
 <br>
