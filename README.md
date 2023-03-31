@@ -75,6 +75,11 @@
 
 ---------------------------------------
 
+<br>
+
+</br>
+
+
 ## 🛠️ 모델 기능별 구현
 
 ### Text Detection
@@ -90,7 +95,7 @@
 </div>
 
 
-<bt>
+<br>
 
 </br>
 
@@ -101,6 +106,7 @@
 
 
 <br>
+
 </br>
 
 ### Text Recognition
@@ -115,6 +121,7 @@
 
 
 <br>
+
 </br>
 
 ### Voice 
@@ -124,3 +131,7 @@
 </div>
 
 - 프로토타입 모델 구현 전 TACOTRON2 기반으로 Language : KOR 선택이 가능하도록 설계된 TeonsorFlowTTS의 업데이트로 인한 의존성 문제로 TeonsorFlowTTS의 FastSpeech2 모델 사용을 최종적으로 결정.
+
+
+<br>
+</br>
