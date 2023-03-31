@@ -65,7 +65,9 @@
 <p align="center"><img src ="https://user-images.githubusercontent.com/119566469/229003876-f67ae56d-af04-422c-93e7-f673e48c5fc7.png" width="700"></p>
 
 - 초기 서비스 프로세스 입니다.
-    - input image  -> webcam
+    -  초기 : webcam으로 data 전달 : 화질 저하로 인한 OCR인식 불가 
+    -  현재 : image/video로 data 전달 
+    
 
 <p align="center"><img src ="https://user-images.githubusercontent.com/119566469/228916839-1d6f27be-d9d0-4688-85bf-0997adb0bf93.PNG" width="700"></p>
 
