@@ -1,4 +1,4 @@
-# :musical_note: 음성 고지서 서비스 ‘SORI’ :musical_note:
+# :musical_note: Project 우리 알리미 'SORI' 
 
 <p align="center"><img src ="https://user-images.githubusercontent.com/119566469/228908423-65d2812a-8034-43fd-979c-3553052841f8.PNG" width="200"></p>
 
@@ -13,7 +13,7 @@
 
 </br>
 
-## 역할 분담 
+## 💁 팀 구성  
 |  팀  | 멤버     |      
 |:-----:|:----------:|
 |조장 김의석|<img src="https://user-images.githubusercontent.com/119566469/228912270-95157db4-8d2e-4a63-8f1c-a3bce062ec18.JPG" width = 150>| 
@@ -23,15 +23,39 @@
 
 ------------------------------------
 
-<br>
-
-</br>
-
 ## 아이디어 구상 
 저시력자들을 대상으로 QR코드를 이용하여 고지서의 내용을 음성으로 전환해주는 서비스가 존재하나 몇가지 문제로 서비스의 제한이 많아 무용지물 상태라는 뉴스를 보았습니다.<br>
 저희는 QR코드가 아닌 고지서 전체를 찍으면 음성으로 안내해주는 서비스를 도전했습니다.
 
 ---------------------------------------------------
+
+<br>
+
+</br>
+
+## 📜 사용환경
+### Languege 
+- Python
+### Text Detection
+- CUDA 11.2 - torch 1.7.1 - torchvision 0.8.2
+- Fine tuning form YoloV5 pretrained weights
+- opencv - Python 4.7.0.72
+
+### Text Recognition
+- tesseract 5.3.0
+
+### Voice 
+- Window 11
+- WSL2: Ubuntu 22.04 LTS
+- Python>=3.8 
+- GPU: GeforceRTX 3080ti
+- CPU: AMD Ryzen 7 5800X 8-Core Processor
+- RAM == 64.0GB 
+
+<br>
+
+</br>
+
 
 <br>
 
