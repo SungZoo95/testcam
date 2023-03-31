@@ -60,22 +60,22 @@
 
 </br>
 
-## 🔄프로세스 
+## 🔄 프로세스 
 
 <p align="center"><img src ="https://user-images.githubusercontent.com/119566469/229003876-f67ae56d-af04-422c-93e7-f673e48c5fc7.png" width="700"></p>
 
 - 초기 서비스 프로세스 입니다.
-    - image input -> webcam
+    - input image  -> webcam
 
 <p align="center"><img src ="https://user-images.githubusercontent.com/119566469/228916839-1d6f27be-d9d0-4688-85bf-0997adb0bf93.PNG" width="700"></p>
 
-- Text Detection : Yolov5 모델을 사용해 Image의 원하는 부분을 추출 
+- Text Detection : Yolov5 모델을 사용해 Image의 원하는 부분을 추출
 <br>
 
 - Text Recognition : Pytesseract를 사용해 Text Detection을 통해 나온 이미지의 글자를 추출
 <br>
 
-- Voice : TensorflowTTS를 사용해 Text Recognition의 글자들을 음성으로 생성합니다. 
+- Voice : TensorflowTTS를 사용해 Text Recognition의 글자들을 음성으로 생성
 
 ---------------------------------------
 
@@ -87,7 +87,7 @@
 ## 🛠️ 모델 기능별 구현
 
 ### Text Detection
-- YoloV5는 실시간 객체인식 분야에서 yolo는 one-stage detector로써 two-stage detector모델들에 비해 추론속도와 모델크기에 있어서 강점.
+- YoloV5는 실시간 객체인식 분야에서 yolo는 one-stage detector로써 two-stage detector모델들에 비해 추론속도와 모델크기에 있어서 강점
 <p align="center"><img src ="https://user-images.githubusercontent.com/119566469/229000082-dea4e659-79df-4f6a-b794-616eeb740a13.png" width="700"></p>
 
 
