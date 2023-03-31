@@ -81,8 +81,8 @@
 - YoloV5는 실시간 객체인식 분야에서 yolo는 one-stage detector로써 two-stage detector모델들에 비해 추론속도와 모델크기에 있어서 강점.
 <p align="center"><img src ="https://user-images.githubusercontent.com/119566469/229000082-dea4e659-79df-4f6a-b794-616eeb740a13.png" width="700"></p>
 
+
 - 고지서 내의 핵심 내용이 담긴 영역을 YoloV5를 통해 가져온다.
-- [3.고지서 타켓 사진2-1],[4.고지서 타켓 사진2-2]
 
 <div>
   <img src="https://user-images.githubusercontent.com/119566469/228919068-51ccc13f-e757-4ea7-b8fc-1337cbcd6475.PNG" width="300">
