@@ -104,6 +104,13 @@
 
 </br>
 
-- Text Recognition
+
+### Text Recognition
+- 두 가지 Model fine tuning(TrOCR, CRNN)과 Library(EasyOCR, Tesseract)의 성능 비교를 통해 최종적으로 Tesseract를 사용하여 프로젝트 진행
+<div>
+  <img src="https://user-images.githubusercontent.com/119566469/229001108-1b5b6a1a-a3aa-4f88-a210-9846bfa557dd.jpeg" width="300">
+  <img src="https://user-images.githubusercontent.com/119566469/229001112-6e5bebda-0f0e-481d-88ed-725add778a0a.png" width="300">
+  <img src="https://user-images.githubusercontent.com/119566469/229001115-695b8651-479e-4b31-9eb1-1825415986c5.png" width="300">
+</div>
 
 
