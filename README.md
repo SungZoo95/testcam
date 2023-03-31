@@ -101,9 +101,7 @@
 
 
 <br>
-
 </br>
-
 
 ### Text Recognition
 - 두 가지 Model fine tuning(TrOCR, CRNN)과 Library(EasyOCR, Tesseract)의 성능 비교를 통해 최종적으로 Tesseract를 사용하여 프로젝트 진행
@@ -112,5 +110,16 @@
   <img src="https://user-images.githubusercontent.com/119566469/229001112-6e5bebda-0f0e-481d-88ed-725add778a0a.png" width="300">
   <img src="https://user-images.githubusercontent.com/119566469/229001115-695b8651-479e-4b31-9eb1-1825415986c5.png" width="300">
 </div>
+- 라이브러리 선정 후 추가적인 학습과 이미지 전처리를 통해 인식률을 높임
 
 
+
+<br>
+</br>
+
+### Voice 
+- Tortoise 등 여러 TTS 모델이 있으나 한국어를 지원 하지 않거나 라이브러리 호환 문제로 TACOTRON2, FastSpeech2를 기반으로 모델 사용.
+<div>
+  <img src="https://user-images.githubusercontent.com/119566469/229001350-f2a81d9e-4d30-4fa2-b863-f7b82986536f.png" width="300">
+</div>
+- 프로토타입 모델 구현 전 TACOTRON2 기반으로 Language : KOR 선택이 가능하도록 설계된 TeonsorFlowTTS의 업데이트로 인한 의존성 문제로 TeonsorFlowTTS의 FastSpeech2 모델 사용을 최종적으로 결정.
