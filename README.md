@@ -169,3 +169,13 @@ Input Process를 실시간 입력이 아닌 이미지 및 동영상 업드로 �
   - NumPy와 다른 라이브러리 호환성 이슈 발생으로 dockerfile에 pip install numpy==1.19.5 추가하고 Nvidia GPG Public Key를 교체하여 Dockerfile을 구동할 수있게 수정
 
 ----------------------
+
+## 🙏 개선점 (추가 작업)
+<p align="center"><img src ="https://user-images.githubusercontent.com/119566469/229005410-d682be5e-d36d-49f0-9b42-652b0ee8465b.png" width="700"></p>
+- 클라우드 배포 
+- 스마트폰을 통해 웹에 접속해 서비스를 이용 가능하게 함 (편의성,접근성)
+- voice : 정형화된 데이터(출력물 중 고정된 문자열)를 가지고 음성을 미리 리스트로 저장하고 필요한 부분(금액과 같은 부분)만 생성하면 서비스속도가 개선되어질것이라고 보임
+- 프론트엔드 개선 
+
+
+
