@@ -129,3 +129,15 @@
 
 <br>
 </br>
+
+### Web
+- Flask를 사용한 웹 구현 방법 
+<div>
+  <img src="https://user-images.githubusercontent.com/119566469/229002030-e59b1196-05cc-42ed-8648-46f93e80c6bc.png" width="600">
+</div>
+
+1. Client가 image/video를 선택해 로컬 서버에 전송합니다.
+2. 받은 image/video를 로컬 서버에 포함된 Yolov5모델(학습되어있는)에 전달하여 예측 값을 뽑아냅니다. ( 3장)
+3. 3장으로 나눠진 image를 Pytesseract를 사용하여 원하는 text를 image에서 추출합니다
+4. 추출한 text를 Docker Cotainer안에 있는 Tensorflowtts에 전달하고 다시 음성파일로 로컬 서버에 전달받습니다.
+5. 전달받은 음성파일을 로컬 서버에서 Client에게 음성으로 전달합니다.
