@@ -117,18 +117,19 @@
   <img src="https://user-images.githubusercontent.com/119566469/229001112-6e5bebda-0f0e-481d-88ed-725add778a0a.png" width="300">
   <img src="https://user-images.githubusercontent.com/119566469/229001115-695b8651-479e-4b31-9eb1-1825415986c5.png" width="300">
 </div>
+
 - 라이브러리 선정 후 추가적인 학습과 이미지 전처리를 통해 인식률을 높임
 
 <br>
 </br>
 
 ### Voice 
-- Tortoise 등 여러 TTS 모델이 있으나 한국어를 지원 하지 않거나 라이브러리 호환 문제로 TACOTRON2, FastSpeech2를 기반으로 모델 사용.
+- Tortoise 등 여러 TTS 모델이 있으나 한국어를 지원 하지 않거나 라이브러리 호환 문제로 TACOTRON2, FastSpeech2를 기반으로 모델 사용
 <div>
   <img src="https://user-images.githubusercontent.com/119566469/229001350-f2a81d9e-4d30-4fa2-b863-f7b82986536f.png" width="600">
 </div>
 
-- 프로토타입 모델 구현 전 TACOTRON2 기반으로 Language : KOR 선택이 가능하도록 설계된 TeonsorFlowTTS의 업데이트로 인한 의존성 문제로 TeonsorFlowTTS의 FastSpeech2 모델 사용을 최종적으로 결정.
+- 프로토타입 모델 구현 전 TACOTRON2 기반으로 Language : KOR 선택이 가능하도록 설계된 TeonsorFlowTTS의 업데이트로 인한 의존성 문제로 TeonsorFlowTTS의 FastSpeech2 모델 사용을 최종적으로 결정
 
 <br>
 </br>
@@ -154,17 +155,17 @@
 ## 👾 기능별 오류 및 해결
 
 ### Text Detection 
-- 테스트 데이터 구성을 위해 웹크롤링으로 고지서 이미지를 수집하였으나 수집한 데이터의 화질, 구도, 채광 등의 차이가 심해 모델 학습에 적합하지 않다고 판단하여 실제 고지서를 통해 Dataest을 구성. 
+- 테스트 데이터 구성을 위해 웹크롤링으로 고지서 이미지를 수집하였으나 수집한 데이터의 화질, 구도, 채광 등의 차이가 심해 모델 학습에 적합하지 않다고 판단하여 실제 고지서를 통해 Dataest을 구성
 
 ### Text Recognition
 - 실제 Webcam에서 가져온 저화질 이미지가 Tesseract의 인식률에 영향을 주어
-Input Process를 실시간 입력이 아닌 이미지 및 동영상 업드로 변경하여 화질 문제로 인한 인식률 저하 문제를 해결.
+Input Process를 실시간 입력이 아닌 이미지 및 동영상 업드로 변경하여 화질 문제로 인한 인식률 저하 문제를 해결
 
 ### Voice
   ##### Tensorflow 버전 오류
-  - docker container를 2.6.0 으로 만든 다음 터미널 안에서 intall 하면 강제적으로 가동하지만, dockerfile 내에서 구동하면 오류 발생. 2.7.0에서 구동이 되지 않는 라이브러리가 있음을 확인. 
+  - docker container를 2.6.0 으로 만든 다음 터미널 안에서 intall 하면 강제적으로 가동하지만, dockerfile 내에서 구동하면 오류 발생. 2.7.0에서 구동이 되지 않는 라이브러리가 있음을 확인 
 
   ##### 권한 변경 및 docker container 설정 변경
-  - NumPy와 다른 라이브러리 호환성 이슈 발생으로 dockerfile에 pip install numpy==1.19.5 추가하고 Nvidia GPG Public Key를 교체하여 Dockerfile을 구동할 수있게 수정.
+  - NumPy와 다른 라이브러리 호환성 이슈 발생으로 dockerfile에 pip install numpy==1.19.5 추가하고 Nvidia GPG Public Key를 교체하여 Dockerfile을 구동할 수있게 수정
 
 ----------------------
