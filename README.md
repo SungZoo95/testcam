@@ -23,7 +23,7 @@
 
 ------------------------------------
 
-## 아이디어 구상 
+## :cloud: 아이디어 구상 
 저시력자들을 대상으로 QR코드를 이용하여 고지서의 내용을 음성으로 전환해주는 서비스가 존재하나 몇가지 문제로 서비스의 제한이 많아 무용지물 상태라는 뉴스를 보았습니다.<br>
 저희는 QR코드가 아닌 고지서 전체를 찍으면 음성으로 안내해주는 서비스를 도전했습니다.
 
@@ -60,9 +60,11 @@
 
 </br>
 
-## 프로세스 
+## 🔄프로세스 
+
 <p align="center"><img src ="https://user-images.githubusercontent.com/119566469/228916839-1d6f27be-d9d0-4688-85bf-0997adb0bf93.PNG" width="700"></p>
 
+<p align="center"><img src ="https://user-images.githubusercontent.com/119566469/229003876-f67ae56d-af04-422c-93e7-f673e48c5fc7.png" width="700"></p>
 -------------------------------------
 
 - Text Detection : Yolov5 모델을 사용해 Image의 원하는 부분을 추출 
@@ -135,11 +137,11 @@
   <img src="https://user-images.githubusercontent.com/119566469/229002030-e59b1196-05cc-42ed-8648-46f93e80c6bc.png" width="800">
 </div>
 
-1. Client가 image/video를 선택해 로컬 서버에 전송합니다.
-2. 받은 image/video를 로컬 서버에 포함된 Yolov5모델(학습되어있는)에 전달하여 예측값을 뽑아냅니다. ( 3장)
-3. 3장으로 나눠진 image를 Pytesseract를 사용하여 원하는 text를 image에서 추출합니다
-4. 추출한 text를 Docker Cotainer안에 있는 Tensorflowtts에 전달하고 다시 음성파일로 로컬 서버에 전달받습니다.
-5. 전달받은 음성파일을 로컬 서버에서 Client에 음성으로 전달합니다.
+1. Client가 image/video를 선택해 로컬 서버에 전송
+2. 받은 image/video를 로컬 서버에 포함된 Yolov5모델(학습되어있는)에 전달하여 예측값을 추출
+3. 추출한 image를 Pytesseract를 사용하여 원하는 text를 image에서 추출
+4. 추출한 text를 Docker Cotainer안에 있는 Tensorflowtts에 전달하고 다시 음성파일로 로컬 서버에 전달
+5. 전달받은 음성파일을 로컬 서버에서 Client에 음성으로 전달
 
 -----------------------------------------
 
@@ -162,3 +164,5 @@ Input Process를 실시간 입력이 아닌 이미지 및 동영상 업드로 �
 
   ##### 권한 변경 및 docker container 설정 변경
   - NumPy와 다른 라이브러리 호환성 이슈 발생으로 dockerfile에 pip install numpy==1.19.5 추가하고 Nvidia GPG Public Key를 교체하여 Dockerfile을 구동할 수있게 수정.
+
+----------------------
