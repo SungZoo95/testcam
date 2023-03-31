@@ -120,6 +120,6 @@
 ### Voice 
 - Tortoise 등 여러 TTS 모델이 있으나 한국어를 지원 하지 않거나 라이브러리 호환 문제로 TACOTRON2, FastSpeech2를 기반으로 모델 사용.
 <div>
-  <img src="https://user-images.githubusercontent.com/119566469/229001350-f2a81d9e-4d30-4fa2-b863-f7b82986536f.png" width="300">
+  <img src="https://user-images.githubusercontent.com/119566469/229001350-f2a81d9e-4d30-4fa2-b863-f7b82986536f.png" width="600">
 </div>
 - 프로토타입 모델 구현 전 TACOTRON2 기반으로 Language : KOR 선택이 가능하도록 설계된 TeonsorFlowTTS의 업데이트로 인한 의존성 문제로 TeonsorFlowTTS의 FastSpeech2 모델 사용을 최종적으로 결정.
